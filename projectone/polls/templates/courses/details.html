@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block head %}
+{% endblock head %}
+
+{% block title %}
+{{course.title}}
+{% endblock title %}
+
+{% block content %}
+
+<h1 style="color:white">{{category}}</h1>
+<p style="color:white">{{text}}</p>
+
+<div class="list-item" style="display:flex;flex-direction:column;">
+
+<img src=' {% static course.imageUrl %}' alt="{{course.title}}" style="width:30%; height:200px; border-top-left-radius:1rem; border-bottom-left-radius:1rem; ">
+<h1 style="color:white;"> {{course.title}}</h1>
+<p style="color:white;">{{course.description}} </p>
+</div>
+
+
+ 
+{% endblock content %}

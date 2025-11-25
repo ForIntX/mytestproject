@@ -1,0 +1,24 @@
+<div style=" display:flex; flex-direction:column; width:20%;" >
+    
+    <a href="/" style="color:black; border:3px solid rgba(186, 186, 186, 1); display:flex; padding:1rem; 
+    {% if selectedCategory != category.slug %}
+    background-color:white;
+    {% else %}
+    {% endif %} " 
+    class="{% if selectedCategory == category.slug %}active{% endif %}">Tüm Kategoriler</a>
+    
+    {% for category in categories %}
+    
+    <a href=" {% url 'pollsTypeName' category.slug %} " 
+    style="color:black; border:3px solid rgba(186, 186, 186, 1); display:flex; padding:1rem; 
+    {% if selectedCategory != category.slug %}
+    background-color:white;
+    {% else %}
+    {% endif %} " 
+    class="{% if selectedCategory == category.slug %}active{% endif %}">
+    {% comment %} url içerisine girecek olan parametre bizim urls.pyda tanımladığımz name parametresidir. {% endcomment %}
+        {{category.name| title}}
+    </a>    
+    
+    {% endfor %}
+</div>

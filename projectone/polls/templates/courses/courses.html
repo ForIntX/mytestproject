@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block head %}
+{% endblock head %}
+
+{% block title %}
+Kurslar
+{% endblock title %}
+
+{% block content %}
+
+<h1 style="color:white"></h1>
+<p style="color:white"></p>
+
+<div class="list-item" style="display:flex;flex-direction:column;">
+
+    {% comment %} ! bak bu çok önemli haa ogren bu kod kısmını {% endcomment %}
+    {% for dataEl in data %}
+    
+    <a href= " {% url 'pollsTypeName' dataEl %}" style="color:black ">{{dataEl}}</a>    
+    {% endfor %}
+    {% comment %} ! önemli yer bitimi {% endcomment %}
+  
+</div>
+
+
+ 
+{% endblock content %}

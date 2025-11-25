@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/create_form.css' %}">
+
+{% endblock head %}
+
+{% block title %}
+Create Course
+{% endblock title %}
+
+{% block content %} 
+<div class="list-item" style="display:flex;flex-direction:column; padding-right:1rem;padding-left:1rem;">
+    
+    {% if error %}
+    <div class="alert-div">
+    {% for message in messages %}
+    <p class="warning-paragraph">
+        {{message}}
+    </p>
+    {% endfor %}
+    <button type="button" id="close-button">X</button>
+    </div>
+        {% else %}
+        
+    {% endif %}
+    <form action="{% url 'create_category' %}" method="POST" class="create-form">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="input-area {% if field.name == 'isActive' %}different-wrapper{% endif %} {% if field.errors %}invalid{% endif %}">
+                {{field.errors}}
+                <label class="form-label" for="{{field.id_for_label}}">{{field.label}}</label>
+                {% if field.name == 'isActive' %}
+                <div class="checkbox">
+                    {{field}}
+                </div>
+                {% else %}
+                {{field}}
+
+                {% endif %}
+                </div>    
+            
+                {% endfor %} 
+                       
+
+        <div class="buttons">
+
+            <button type="submit" id="save">Kaydet</button>
+            <button type="reset" id="reset">Sıfırla</button>
+        </div>
+    </form>
+
+</div>
+
+
+ 
+{% endblock content %}
+
+
+{% block script %}
+{% endblock script %}

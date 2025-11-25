@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Sanal ortamı aktifleştir
+source venv/bin/activate
+
+#klasör değiştir
+cd projectone
+
+# Django server'ı başlat
+python3 manage.py runserver

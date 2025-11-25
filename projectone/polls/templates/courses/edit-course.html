@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/create_form.css' %}">
+
+{% endblock head %}
+
+{% block title %}
+Edit Course
+{% endblock title %}
+
+{% block content %} 
+<div class="list-item" style="display:flex;flex-direction:column; padding-right:1rem;padding-left:1rem;">
+    
+    {% if error %}
+    <div class="alert-div">
+    {% for message in messages %}
+    <p class="warning-paragraph">
+        {{message}}
+    </p>
+    {% endfor %}
+    <button type="button" id="close-button">X</button>
+    </div>
+        {% else %}
+        
+    {% endif %}
+    <form  method="POST" class="create-form">
+        {% csrf_token %}
+       
+       
+        <div class="input-area {% if form.title.errors %}invalid{% endif %}">
+            {{form.title.errors}}
+            <label class="form-label" for="{{form.title.id_for_label}}">Başlık</label>
+            {{form.title}}
+        </div>
+        
+        <div class="input-area {% if form.description.errors %}invalid{% endif %}">
+            {{form.description.errors}}
+            <label class="form-label" for="{{form.description.id_for_label}}">Açıklama</label>
+            {{form.description}}
+        </div>
+        
+        <div class="input-area {% if form.imageUrl.errors %}invalid{% endif %}">
+            {{form.imageUrl.errors}}
+            <label class="form-label" for="{{form.imageUrl.id_for_label}}">Resim</label>
+            {{form.imageUrl}}
+        </div>
+        
+        
+        <div class="input-area different-wrapper {% if form.isActive.errors %}invalid{% endif %}">
+            {{form.isActive.errrors}}
+            <label class="form-label" for="{{form.isActive.id_for_label}}">Kurs Aktif mi?</label>
+            <div class="checkbox ">
+
+                {{form.isActive}}
+            </div>
+        </div>
+
+        <div class="input-area {% if form.slug.errors %}invalid{% endif %}">
+            {{form.slug.errrors}}
+
+            <label class="form-label" for="{{form.slug.id_for_label}}">Slug</label>
+            {{form.slug}}
+        </div>
+      <div class="input-area different-wrapper {% if form.categories.errors %}invalid{% endif %}">
+            {{form.categories.errrors}}
+
+            <label class="form-label" for="{{form.categories.id_for_label}}">Kategoriler</label>
+            <div class="checkbox">
+            {{form.categories}}
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <div class="buttons">
+
+            <button type="submit" id="save">Kaydet</button>
+            <button type="reset" id="reset">Sıfırla</button>
+        </div>
+    </form>
+
+</div>
+
+
+ 
+{% endblock content %}
+
+
+{% block script %}
+{% endblock script %}

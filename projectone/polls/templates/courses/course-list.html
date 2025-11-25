@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+{% endblock head %}
+
+
+{% block content %}
+
+
+<div class="table-wrapper">
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th style="width:120px;"></th>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>Tarih</th>
+                <th style="width: 70px;"></th>
+                <th style="width: 70px;"></th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            <tr>
+            
+                <td><img src="{% static 'img/'|add:course.imageUrl %}" ></td>
+                <td>{{course.title}}</td>
+                <td>{{course.description}}</td>
+                <td>{{course.date}}</td>
+                <td> <a href="{% url "course_edit" course.id %}" style="background-color:blue;">Güncelle</a>
+                <td> <a href="{% url "course_delete" course.id %}">Sil</a>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+ 
+{% endblock content %}

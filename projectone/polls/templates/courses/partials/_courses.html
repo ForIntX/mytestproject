@@ -1,0 +1,17 @@
+{% load static %}
+
+    <div style='border:1px solid white; width:100%; display:flex;  gap:2rem; border-radius:1rem;'>
+            <img src=' {% static course.imageUrl %}' alt="{{course.title}}" style="width:30%; height:200px; border-top-left-radius:1rem; border-bottom-left-radius:1rem; ">
+            <div style="display:flex;flex-direction:column;gap:1rem; padding:1rem; text-transform:capitalize;">
+                <a href= "{% url 'details' course.slug %}"> <h1>
+                    {{course.title}}
+                </h1>
+            </a>
+                <p>{{course.description | truncatechars:20}}</p> {% comment %} ! truncatechars içeriye yollanacak karakter sayısını belirlemeyei sağlar aşırı onemli bir şey bu {% endcomment %}
+
+               {{ course.date }}
+            </div>
+    </div>
+
+
+
