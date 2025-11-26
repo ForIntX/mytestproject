@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+{% endblock head %}
+
+
+{% block content %}
+
+
+<div class="table-wrapper">
+    <h1>Login</h1>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            {% if error %}
+                <p style="color:red;">{{ error }}</p>
+            {% endif %}
+        </div>
+        <table>
+            <tr>
+                <td><label for="username">Username:</label></td>
+                <td><input type="text" id="username" name="username" required></td>
+            </tr>
+        
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" id="password" name="password" required></td>
+            </tr>
+            
+            
+        </table>
+        <button type="submit">Login</button>
+</div>
+ 
+{% endblock content %}
